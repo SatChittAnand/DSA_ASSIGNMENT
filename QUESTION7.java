@@ -1,49 +1,51 @@
-import java.util.*;
-public class QUESTION7 {
-
+import java.util.Scanner;
+public class Q7 {
+	static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter number of elements of Array: ");
-		int n = sc.nextInt();
-		int a[] = new int[n];
-
-		System.out.print("Enter elements of the array: ");
-		for(int i=0;i<n;i++) {
-			a[i]=sc.nextInt();
-		}
-		int mx=a[0],mn=a[0];
-		int in=0,lin=0;
-		int cn=1,cnt=1;
-//		Arrays.sort(a);
-		for(int i=1;i<n;i++) {
-			if(a[i]==mx) cn++;
-			if(a[i]>mx) {
-				mx=a[i];in=i;
-				
-			}
-			if(a[i]<=mn) {
-				if(a[i]<mn) cnt=1;
-				if(a[i]==mn) cnt++;
-				mn=a[i];lin=i;
-			}
-				
-			
-			
-			
-			
-		}
-		
-//		for(int i=0;i<n;i++) {
-//			if(a[0]==a[i]) mn++;
-//			else if(a[n-1]==a[i]) mx++;
-//		}
-		System.out.println("Maximum element of Array is "+mx+" and occurs "+cn+" times");
-		System.out.println("Minimum element of Array is "+mn+" and occurs "+cnt+" times");
-		System.out.println("First occurence of maximum element is at position "+in);
-		System.out.println("last occurence of minimum element is at position "+lin);
-
+		System.out.println("Enter array size:");
+		int n=sc.nextInt();
+		int a[]=new int[n];
+		input(a);
+		display(a);
+		findMaxMin(a);
 	}
-
+	public static void input(int a[])
+	{
+		System.out.println("Input array elements:");
+		for(int i=0;i<a.length;i++)
+			a[i]=sc.nextInt();
+	}
+	public static void display(int a[])
+	{
+		System.out.print("The array elements are:");
+		for(int i=0;i<a.length;i++)
+			System.out.print(a[i]+" ");
+		System.out.println();
+	}
+	public static void findMaxMin(int a[])
+	{
+		int max=a[0],min=a[0],x=0,y=0,c1=1,c2=1;
+		for(int i=1;i<a.length;i++)
+		{
+			if(a[i]==max)
+				c1++;
+			if(a[i]>max)
+			{
+				max=a[i]; x=i;
+				c1=1;
+			}
+			if(a[i]<=min)
+			{
+				if(a[i]<min)
+					c2=1;
+				if(a[i]==min)
+					c2++;
+				min=a[i]; y=i;
+			}
+		}
+		System.out.println("No of occurance of max="+c1);
+		System.out.println("No of occurance of min="+c2);
+		System.out.println("First occurance of max at index "+x);
+		System.out.println("Last occurance of min at index "+y);
+	}
 }
-//
